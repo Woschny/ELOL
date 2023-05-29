@@ -185,6 +185,9 @@ function hdlLoad() {
                         if (card.getAttribute("false") == "false") {
                             score++;
                         }
+                        if (card.getAttribute("false") == "true") {
+                            score--;
+                        }
                         card.setAttribute("false", "true");
                         score++;
                     }
