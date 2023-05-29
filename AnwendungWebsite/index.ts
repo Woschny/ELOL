@@ -229,7 +229,7 @@ function hdlLoad(): void {
             }
           }
           if (score == activeTest.getElementsByClassName('card').length) {
-            alt();
+            setTimeout(alt, 100);
           }
         }
       });  
