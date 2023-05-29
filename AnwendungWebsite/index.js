@@ -24,8 +24,11 @@ function hdlLoad() {
     let testSevenBtn = document.getElementById("T7");
     let testAightBtn = document.getElementById("T8");
     let videoIDArray = ["IntroVideo", "1.1Video", "1.2Video", "1.3Video", "1.4Video", "2.1Video", "2.2Video", "2.3Video", "2.4Video", "OutroVideo"];
+    let testIDArray = ["test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8"];
     let activeVideo;
     let activeTest;
+    let score = 0;
+    let rightAnswers = [];
     introBtn.addEventListener("click", () => moveVideoToActive("IntroVideo"));
     oneOneBtn.addEventListener("click", () => moveVideoToActive("1.1Video"));
     oneTwoBtn.addEventListener("click", () => moveVideoToActive("1.2Video"));
@@ -44,6 +47,7 @@ function hdlLoad() {
     testSixBtn.addEventListener("click", () => moveTestToActive("test6"));
     testSevenBtn.addEventListener("click", () => moveTestToActive("test7"));
     testAightBtn.addEventListener("click", () => moveTestToActive("test8"));
+    moveVideoToActive("IntroVideo");
     const body = document.querySelector("body");
     let x = 0;
     let y = 0;
@@ -95,14 +99,23 @@ function hdlLoad() {
         testInstaller();
     }
     function testInstaller() {
+        score = 0;
+        rightAnswers = [];
         let inputs = activeTest.querySelectorAll("input");
         for (let input of inputs) {
             input.addEventListener("change", () => displayMessage(input.value, input.getAttribute("answer"), input.checked));
             input.checked = false;
+            if (input.getAttribute("answer") == "right") {
+                rightAnswers.push(input);
+            }
         }
         if (activeTest.querySelector("textarea") != undefined) {
             activeTest.querySelector("textarea").value = "";
         }
+    }
+    function alt() {
+        alert("Super du hast den Test erfolgreich gelöst! Auf zum nächsten Test!");
+        moveTestToActive(testIDArray[testIDArray.indexOf(activeTest.id) + 1]);
     }
     function displayMessage(value, answer, ischecked) {
         if (ischecked == true) {
@@ -112,12 +125,16 @@ function hdlLoad() {
                 activeTest.querySelector("textarea").classList.remove("rounded-border-green");
                 activeTest.querySelector("textarea").classList.remove("rounded-border-white");
                 activeTest.querySelector("textarea").classList.add("rounded-border-green");
+                score++;
             }
             else {
                 activeTest.querySelector("textarea").classList.remove("rounded-border-green");
                 activeTest.querySelector("textarea").classList.remove("rounded-border-red");
                 activeTest.querySelector("textarea").classList.remove("rounded-border-white");
                 activeTest.querySelector("textarea").classList.add("rounded-border-red");
+                if (rightAnswers.length > 1) {
+                    score--;
+                }
             }
         }
         else {
@@ -125,6 +142,17 @@ function hdlLoad() {
             activeTest.querySelector("textarea").classList.remove("rounded-border-green");
             activeTest.querySelector("textarea").classList.remove("rounded-border-red");
             activeTest.querySelector("textarea").classList.add("rounded-border-white");
+            if (answer == "right") {
+                if (rightAnswers.length > 1) {
+                    score--;
+                }
+            }
+            else {
+                score++;
+            }
+        }
+        if (score == rightAnswers.length) {
+            setTimeout(alt, 100);
         }
     }
     enableDragAndDrop();
@@ -154,22 +182,45 @@ function hdlLoad() {
                         activeTest.querySelector("textarea").classList.remove("rounded-border-red");
                         activeTest.querySelector("textarea").classList.remove("rounded-border-green");
                         activeTest.querySelector("textarea").classList.add("rounded-border-green");
+                        if (card.getAttribute("false") == "false") {
+                            score++;
+                        }
+                        card.setAttribute("false", "true");
+                        score++;
                     }
                     else if (place.getAttribute("text")) {
                         activeTest.querySelector("textarea").value = place.getAttribute("text");
                         activeTest.querySelector("textarea").classList.remove("rounded-border-green");
                         activeTest.querySelector("textarea").classList.remove("rounded-border-red");
                         activeTest.querySelector("textarea").classList.add("rounded-border-red");
+                        if (card.getAttribute("false") == "true") {
+                            score--;
+                        }
+                        if (card.getAttribute("false") != "false") {
+                            card.setAttribute("false", "false");
+                            score--;
+                        }
                     }
                     else {
                         activeTest.querySelector("textarea").value = card.getAttribute("text");
                         activeTest.querySelector("textarea").classList.remove("rounded-border-green");
                         activeTest.querySelector("textarea").classList.remove("rounded-border-red");
                         activeTest.querySelector("textarea").classList.add("rounded-border-red");
+                        if (card.getAttribute("false") == "true") {
+                            score--;
+                        }
+                        if (card.getAttribute("false") != "false") {
+                            card.setAttribute("false", "false");
+                            score--;
+                        }
+                    }
+                    if (score == activeTest.getElementsByClassName('card').length) {
+                        alt();
                     }
                 }
             });
         });
     }
+    ;
 }
 //# sourceMappingURL=index.js.map
