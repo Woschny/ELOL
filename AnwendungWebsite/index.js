@@ -55,7 +55,7 @@ function hdlLoad() {
         const rect = body.getBoundingClientRect();
         x = (event.clientX - rect.left);
         y = (event.clientY - rect.top);
-        if (x < 250 && y > 200 && y < 750) {
+        if (x < 50 && y > 200 && y < 750) {
             {
                 divMenu.classList.remove("slide-in-from-right"), divMenu.classList.add("slide-in-from-left");
             }

@@ -48,11 +48,11 @@
     <div id="tests">
         <div class="test" id="test1">
             <form>
-                <h2>Frage 1:</h2>
+                <h2>Welche zwei Aussagen treffen auf die jeweilige Frage zu?</h2>
                 <p>Wie wirkt die Farbe Rot?</p>
                 <label>
-                  <input type="checkbox" answer="right" name="q1" value="Korrekt">
-                  Auffällig
+                  <input type="checkbox" name="q1" value="Nein. Orange gilt als exotisch und lebenslustig">
+                  Exotisch
                 </label><br>
                 <label>
                   <input type="checkbox" answer="right" name="q1" value="Korrekt">
@@ -63,11 +63,15 @@
                   Schrill
                 </label><br>
                 <label>
-                  <input type="checkbox" name="q1" value="Nein. Orange gilt als exotisch und lebenslustig">
-                  Exotisch
+                  <input type="checkbox" answer="right" name="q1" value="Korrekt">
+                  Auffällig
                 </label><br>
 
                 <p>Wie wirkt die Farbe Grün?</p>
+                <label>
+                  <input type="checkbox" name="q1" value="Das ist falsch. Orange gilt wie gesagt als exotisch und lebenslustig. ">
+                  Lebenslustig
+                </label><br>
                 <label>
                   <input type="checkbox" answer="right" name="q1" value="Korrekt">
                   Lebendig
@@ -77,15 +81,15 @@
                   Gesund
                 </label><br>
                 <label>
-                  <input type="checkbox" name="q1" value="Das ist falsch. Orange gilt wie gesagt als exotisch und lebenslustig. ">
-                  Lebenslustig
-                </label><br>
-                <label>
                   <input type="checkbox" name="q1" value="Stimmt nicht ganz. Schwarz gilt als würdevoll und exklusiv. Die gesuchte Farbe kommt häufig in der Natur vor.">
                   Würdevoll
                 </label><br>
 
                 <p>Wie wirkt die Farbe Blau?</p>
+                <label>
+                  <input type="checkbox" name="q1" value="Knapp daneben. Violett gilt als widersprüchlich und magisch.">
+                  Widersprüchlich
+                </label><br>
                 <label>
                   <input type="checkbox" answer="right" name="q1" value="Korrekt">
                   Unauffällig
@@ -98,22 +102,19 @@
                   <input type="checkbox" name="q1" value="Eher nicht. Weiß gilt als neu und rein.">
                   Neu
                 </label><br>
-                <label>
-                  <input type="checkbox" name="q1" value="Knapp daneben. Violett gilt als widersprüchlich und magisch.">
-                  Widersprüchlich
-                </label><br>
               </form>
               <textarea name="answerfield" id="answerfield1" cols="30" rows="10"></textarea>
         </div>
 
         <div class="test" id="test2">
-          <div id="origin">
-            <div class="card" data-card-id="1" dest="komp">Rot|Grün</div>
-            <div class="card" data-card-id="2" dest="ton">Rosa|Rot</div>
-            <div class="card" data-card-id="3" dest="kein">Gelb|Schwarz</div>
-            <div class="card" data-card-id="4" dest="qual">gesät. Rot|entsät. Rot</div>
-            <div class="card" data-card-id="5" dest="kein">Blau|Grün</div>
-            <div class="card" data-card-id="6" dest="kein">gesät. Rot|entsät. Blau</div>
+          <h2>Ordne zu:</h2>
+          <div id="origin" class="origin few">
+            <div class="card stacked" data-card-id="6" dest="kein">gesät. Rot<br>entsät. Blau</div>
+            <div class="card stacked" data-card-id="3" dest="kein">Gelb<br>Schwarz</div>
+            <div class="card stacked" data-card-id="4" dest="qual">gesät. Rot<br>entsät. Rot</div>
+            <div class="card stacked" data-card-id="1" dest="komp">Rot<br>Grün</div>
+            <div class="card stacked" data-card-id="2" dest="ton">Rosa<br>Rot</div>
+            <div class="card stacked" data-card-id="5" dest="kein">Blau<br>Grün</div>
           </div>
           <div id="destination">
               <div class="place" text="Leider nein. Der Komplementärkontrast bezieht sich auf Farben, die sich im Farbkreis gegenüberstehen." dest="komp">Komplementärkontrast</div>
@@ -125,113 +126,127 @@
         </div>
 
         <div class="test" id="test3">
-
-            <div id="origin">
-              <div class="card" data-card-id="7" text="Viele Digitale Geräte verwenden LED’s in ihren Bildschirmen. Diese leuchten in den Farben Rot, Grün, Blau." dest="RGB">Digital</div>
-              <div class="card" data-card-id="8" text="Druckt man etwas aus, so werden die Farbkartuschen in den Farben Magenta, Cyan, Gelb und Schwarz verwendet." dest="CMYK">Analog</div>
-              <div class="card" data-card-id="9" text="Im RGB-Farbraum kann jeder Farbkanal bis zu 256 verschiedene Werte annehmen." dest="RGB">16.7mio Farben</div>
-              <div class="card" data-card-id="10" text="Durch das Fehlen der helleren Farbtöne kann der CMYK-Farbraum meist nur weniger Farben darstellen." dest="CMYK"> weniger als 16.7mio Farben</div>
-              <div class="card" data-card-id="11" text="Durch die Kombination von Rot, Grün und Blau erhält man Weiß. Damit können sehr helle Farben dargestellt werden." dest="RGB">Helle Farben</div>
-              <div class="card" data-card-id="12" text="Durch die Kombination von Cyan, Magenta und Gelb erhält man Schwarz. Damit können keine sehr hellen Farben dargestellt werden." dest="CMYK">Dunkle Farben</div>
+          <h2>Ordne zu:</h2>
+            <div id="origin" class="origin many">
               <div class="card" data-card-id="13" text="Durch die hellen Farben im RGB-Farbraum können hohe Kontraste erzielt werden." dest="RGB">Hohe Kontraste</div>
               <div class="card" data-card-id="14" text="Durch die eher dunklen Farben sind nur schwache Kontraste im CMYK-Modell darstellbar." dest="CMYK">Niedrige Kontraste</div>
               <div class="card" data-card-id="15" text="Durch die Überlagerung von Rot, Grün und Blau wird Weiß geschaffen." dest="RGB">Addition</div>
+              <div class="card" data-card-id="10" text="Durch das Fehlen der helleren Farbtöne kann der CMYK-Farbraum meist nur weniger Farben darstellen." dest="CMYK"> weniger als 16.7mio Farben</div>
+              <div class="card" data-card-id="11" text="Durch die Kombination von Rot, Grün und Blau erhält man Weiß. Damit können sehr helle Farben dargestellt werden." dest="RGB">Helle Farben</div>
+              <div class="card" data-card-id="12" text="Durch die Kombination von Cyan, Magenta und Gelb erhält man Schwarz. Damit können keine sehr hellen Farben dargestellt werden." dest="CMYK">Dunkle Farben</div>
               <div class="card" data-card-id="16" text="Durch die Absorption von Cyan, Magenta und Gelb, entsteht schwarz." dest="CMYK">Subtraktion</div>
+              <div class="card" data-card-id="7" text="Viele Digitale Geräte verwenden LED’s in ihren Bildschirmen. Diese leuchten in den Farben Rot, Grün, Blau." dest="RGB">Digital</div>
+              <div class="card" data-card-id="8" text="Druckt man etwas aus, so werden die Farbkartuschen in den Farben Magenta, Cyan, Gelb und Schwarz verwendet." dest="CMYK">Analog</div>
+              <div class="card" data-card-id="9" text="Im RGB-Farbraum kann jeder Farbkanal bis zu 256 verschiedene Werte annehmen." dest="RGB">16.7mio Farben</div>
             </div>
             <div id="destination">
-                <div class="place" dest="RGB">RGB-Farbraum</div>
-                <div class="place" dest="CMYK">CMYK-Farbraum</div>
+                <div class="place big" dest="RGB">RGB-Farbraum</div>
+                <div class="place big" dest="CMYK">CMYK-Farbraum</div>
             </div>
             <textarea name="answerfield" id="answerfield4" cols="30" rows="10"></textarea>
           </div>
 
         <div class="test" id="test4">
             <form>
-                <h2>Frage 4:</h2>
+              <br>
+                <h2>Welche Aussage trifft zu?</h2>
+                <br><br>
                 <p>Was ist eine Corporate Identity?</p>
                 <label>
-                  <input type="radio" answer="right" name="q4" value="Das ist korrekt, sehr gut!">
-                  Ein Handbuch für Mitarbeiter, dass die Unternehmensidentität beschreibt
+                  <input type="radio" name="q4" value="Leider nicht richtig. Die Corporate Identity kann wahlweise veröffentlicht werden, das ist allerdings nicht der Zweck des Dokuments.">
+                  Eine Pressemitteilung oder eine Werbekampagne.
                 </label><br>
                 <label>
-                  <input type="radio" name="q4" value="Leider nicht richtig. Die Corporate Identity kann wahlweise veröffentlicht werden, das ist allerdings nicht der Zweck des Dokuments.">
-                  Eine Pressemitteilung oder eine Werbekampagne
+                  <input type="radio" answer="right" name="q4" value="Das ist korrekt, sehr gut!">
+                  Ein Handbuch für Mitarbeiter, dass die Unternehmensidentität beschreibt.
                 </label><br>
               </form>
               <textarea name="answerfield" id="answerfield4" cols="30" rows="10"></textarea>
         </div>
         <div class="test" id="test5">
             <form>
-                <h2>Frage 5:</h2>
+              <br>
+                <h2>Welche Aussage trifft zu?</h2>
+                <br>
+                <br>
                 <p>Woraus besteht ein Farbkonzept?</p>
                 <label>
-                  <input type="radio" answer="right" name="q5" value="Richtig, gut gemacht!">
-                  Primärfarben, Sekundärfarben und Akzentfarben
+                  <input type="radio" name="q5" value="Falsch. Umgangssprachlich könnte das vielleicht stimmen, allerdings nicht fachlich korrekt.">
+                  Schriftfarben, Hintergrundfarben und Akzentfarben.
                 </label><br>
                 <label>
-                  <input type="radio" name="q5" value="Falsch. Umgangssprachlich könnte das vielleicht stimmen, allerdings nicht fachlich korrekt.">
-                  Schriftfarben, Hintergrundfarben und Akzentfarben
+                  <input type="radio" answer="right" name="q5" value="Richtig, gut gemacht!">
+                  Primärfarben, Sekundärfarben und Akzentfarben.
                 </label><br>
                 <label>
                   <input type="radio" name="q5" value="Nicht richtig. Umgangssprachlich könnte das vielleicht stimmen, allerdings nicht fachlich korrekt.">
-                  LOGO-Farben, Schriftfarben und Akzentfarben
+                  LOGO-Farben, Schriftfarben und Akzentfarben.
                 </label><br>
               </form>
               <textarea name="answerfield" id="answerfield5" cols="30" rows="10"></textarea>
         </div>
         <div class="test" id="test6">
             <form>
-                <h2>Frage 6:</h2>
+              <br>
+                <h2>Welche Aussage trifft zu?</h2>
+                <br>
+                <br>
                 <p>Wofür verwendet man Akzentfarben?</p>
                 <label>
-                  <input type="radio" answer="right" name="q6" value="Ganz genau, wie der Name schon verrät, geht es hierbei um einzelne Akzente.">
-                  Bei sehr wichtigen Inhalten, die herausstechen sollen
+                  <input type="radio" name="q6" value="Leider falsch. Es ist möglich, dass die Akzentfarbe im LOGO vorkommt, allerdings keine Regel.">
+                  Ausschließlich im LOGO.
                 </label><br>
                 <label>
-                  <input type="radio" name="q6" value="Leider falsch. Es ist möglich, dass die Akzentfarbe im LOGO vorkommt, allerdings keine Regel.">
-                  Ausschließlich im LOGO
+                  <input type="radio" answer="right" name="q6" value="Ganz genau, wie der Name schon verrät, geht es hierbei um einzelne Akzente.">
+                  Bei sehr wichtigen Inhalten, die herausstechen sollen.
                 </label><br>
                 <label>
                   <input type="radio" name="q6" value="Leider falsch. Akzentfarben können vereinzelt in Texten vorkommen, aber nie durch den gesamten Absatz.">
-                  Für jeden Text
+                  Für jeden Text.
                 </label><br>
               </form>
               <textarea name="answerfield" id="answerfield6" cols="30" rows="10"></textarea>
         </div>
         <div class="test" id="test7">
             <form>
-                <h2>Frage 7:</h2>
+              <br>
+                <h2>Welche Aussage trifft zu?</h2>
+                <br>
+                <br>
                 <p>Warum ist die Auswahl der Farben so wichtig für den Erfolg des Unternehmens?</p>
                 <label>
-                  <input type="radio" answer="right" name="q7" value="Korrekt, die Farben sollten zu den Werten des Unternehmens passen.">
-                  Jede Farbe hat eine Bedeutung, die bei der Verwendung innerhalb Kampagnen weitergetragen wird
-                </label><br>
-                <label>
                   <input type="radio" name="q7" value="Falsch, Farben kosten durch die Nutzung nicht automatisch Geld. Erst im Druck oder beim Patentieren kommt es zu Gebühren … das ist allerdings ein anderes Thema.">
-                  Diese Farben kosten im Gebrauch Geld und müssen vorher auf das Budget abgestimmt werden
+                  Diese Farben kosten im Gebrauch Geld und müssen vorher auf das Budget abgestimmt werden.
                 </label><br>
                 <label>
                   <input type="radio" name="q7" value="Falsch. Es gilt, als starke Empfehlung die Farben ins Konzept einzulegen, dennoch können diese so oft gewechselt werden, wie man möchte.">
-                  Die Auswahl muss gut überlegt sein, da die Farben nur alle 5 Jahre geändert werden dürfen
+                  Die Auswahl muss gut überlegt sein, da die Farben nur alle 5 Jahre geändert werden dürfen.
+                </label><br>
+                <label>
+                  <input type="radio" answer="right" name="q7" value="Korrekt, die Farben sollten zu den Werten des Unternehmens passen.">
+                  Jede Farbe hat eine Bedeutung, die bei der Verwendung innerhalb Kampagnen weitergetragen wird.
                 </label><br>
               </form>
               <textarea name="answerfield" id="answerfield7" cols="30" rows="10"></textarea>
         </div>
         <div class="test" id="test8">
             <form>
-                <h2>Frage 8:</h2>
+              <br>
+                <h2>Welche Aussage trifft zu?</h2>
+                <br>
+                <br>
                 <p>Die Farben des Corporate Design Manuels ziehen sich durch alle Medien des Unternehmens, warum?</p>
                 <label>
                   <input type="radio" answer="right" name="q8" value="Korrekt, mit dem durchgehenden Einsatz der Farben, verbinden wir diese unterbewusst mit dem Unternehmen.">
-                  Dadurch gibt man den Rezipienten einen Wiedererkennungswert neben dem LOGO
+                  Dadurch gibt man den Rezipienten einen Wiedererkennungswert neben dem LOGO.
                 </label><br>
                 <label>
                   <input type="radio" name="q8" value="Hoffentlich nicht, die Designer sollten stets neue Ideen entwickeln … Allerdings dürfen Sie das Farbkonzept so stehen lassen, denn hier muss nichts mehr hinzugefügt werden.">
-                  Na, weil die Designer irgendwann keine Ideen mehr haben
+                  Na, weil die Designer irgendwann keine Ideen mehr haben.
                 </label><br>
                 <label>
                   <input type="radio" name="q8" value="Das stimmt nicht unbedingt. Weitere Farben könnten zu den Paletten des Farbkonzeptes passen, diese müssten darauf abgestimmt werden. Dennoch gilt die Verwendung von Farben außerhalb des Konzeptes als nicht empfehlenswert.">
-                  Da weitere Farben nicht mit den ausgewählten Paletten funktionieren würden
+                  Da weitere Farben nicht mit den ausgewählten Paletten funktionieren würden.
                 </label><br>
               </form>
               <textarea name="answerfield" id="answerfield8" cols="30" rows="10"></textarea>
