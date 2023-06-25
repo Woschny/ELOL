@@ -26,6 +26,23 @@ body{
     }
   }
   
+#nextButton{
+  position: absolute;
+  z-index: 4;
+  left: 1650px;
+  top: 800px;
+  color: white;
+  background-color: #262626;
+  border: white;
+  border-width: 5px;
+  border-radius: 10%;
+  border-style: solid;
+  padding: 20px;
+}
+#nextButton:hover{
+  cursor: pointer;
+}
+
   .slide-in-from-right {
     position: absolute;
     animation: slideInFromRight 0.5s ease-in-out forwards;

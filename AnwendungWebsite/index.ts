@@ -23,10 +23,9 @@ function hdlLoad(): void {
   let testSixBtn: HTMLImageElement = <HTMLImageElement>document.getElementById("T6");
   let testSevenBtn: HTMLImageElement = <HTMLImageElement>document.getElementById("T7");
   let testAightBtn: HTMLImageElement = <HTMLImageElement>document.getElementById("T8");
-  let videoIDArray: string[] = ["IntroVideo", "1.1Video", "1.2Video", "1.3Video", "1.4Video", "2.1Video", "2.2Video", "2.3Video", "2.4Video", "OutroVideo"]
-  let testIDArray: string[] = ["test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8"]
+  let nextButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("nextButton")
+  let videoIDArray: string[] = ["IntroVideo", "1.1Video", "1.2Video", "1.3Video", "1.4Video", "test1", "test2", "test3", "test4", "2.1Video", "2.2Video", "2.3Video", "2.4Video", "test5", "test6", "test7", "test8", "OutroVideo"]
   let activeVideo: HTMLVideoElement;
-  let activeTest: HTMLDivElement;
   let score: number = 0;
   let rightAnswers: HTMLInputElement[] = [];
   introBtn.addEventListener("click", () => moveVideoToActive("IntroVideo"));
@@ -69,8 +68,16 @@ function hdlLoad(): void {
   }
 
 
+  nextButton.addEventListener("click", () => moveVideoToActive(videoIDArray[videoIDArray.indexOf(activeVideo.id) + 1]));
+
 
   function moveVideoToActive(id: string): void {
+    console.log(id);
+    
+    if(id == "test1" || id == "test2" ||id == "test3" ||id == "test4" ||id == "test5" ||id == "test6" || id == "test7" || id == "test8") {
+      moveTestToActive(id);
+    }
+    else{
     if (divActive.children.length > 0) {
       if (divActive.children[0].className == "video") {
         activeVideo.pause();
@@ -83,10 +90,9 @@ function hdlLoad(): void {
     divActive.appendChild(document.getElementById(id));
     activeVideo = <HTMLVideoElement>document.getElementById(id)
     activeVideo.play();
-    if (activeVideo.id != "OutroVideo") {
-      activeVideo.addEventListener("ended", () => moveVideoToActive(videoIDArray[videoIDArray.indexOf(activeVideo.id) + 1]));
-    }
   }
+  }
+
   function moveTestToActive(id: string): void {
     if (divActive.children.length > 0) {
       if (divActive.children[0].className == "video") {
@@ -99,56 +105,56 @@ function hdlLoad(): void {
 
     }
     divActive.appendChild(document.getElementById(id));
-    activeTest = <HTMLDivElement>document.getElementById(id)
+    activeVideo = <HTMLVideoElement>document.getElementById(id)
     testInstaller();
   }
 
   function testInstaller(): void {
     score = 0;
     rightAnswers = [];
-    let inputs: NodeListOf<HTMLInputElement> = <NodeListOf<HTMLInputElement>>activeTest.querySelectorAll("input");
+    let inputs: NodeListOf<HTMLInputElement> = <NodeListOf<HTMLInputElement>>activeVideo.querySelectorAll("input");
     for (let input of inputs) {
       input.addEventListener("change", () => displayMessage(input.value, input.getAttribute("answer"), input.checked))
       input.checked = false;
       if (input.getAttribute("answer") == "right") { rightAnswers.push(input); }
     }
 
-    if (activeTest.querySelector("textarea") != undefined) {
-      activeTest.querySelector("textarea").value = "";
+    if (activeVideo.querySelector("textarea") != undefined) {
+      activeVideo.querySelector("textarea").value = "";
     }
   }
 
   function alt(): void {
-    alert("Super du hast den Test erfolgreich gelöst! Auf zum nächsten Test!");
-    moveTestToActive(testIDArray[testIDArray.indexOf(activeTest.id) + 1])
+    alert("Super du hast den Test erfolgreich gelöst!");
+    moveTestToActive(videoIDArray[videoIDArray.indexOf(activeVideo.id) + 1]);
   }
 
 
   function displayMessage(value: string, answer: string, ischecked: boolean): void {
     if (ischecked == true) {
-      activeTest.querySelector("textarea").value = value;
+      activeVideo.querySelector("textarea").value = value;
       if (answer == "right") {
-        activeTest.querySelector("textarea").classList.remove("rounded-border-red")
-        activeTest.querySelector("textarea").classList.remove("rounded-border-green")
-        activeTest.querySelector("textarea").classList.remove("rounded-border-white")
-        activeTest.querySelector("textarea").classList.add("rounded-border-green")
+        activeVideo.querySelector("textarea").classList.remove("rounded-border-red")
+        activeVideo.querySelector("textarea").classList.remove("rounded-border-green")
+        activeVideo.querySelector("textarea").classList.remove("rounded-border-white")
+        activeVideo.querySelector("textarea").classList.add("rounded-border-green")
         score++;
       }
       else {
-        activeTest.querySelector("textarea").classList.remove("rounded-border-green")
-        activeTest.querySelector("textarea").classList.remove("rounded-border-red")
-        activeTest.querySelector("textarea").classList.remove("rounded-border-white")
-        activeTest.querySelector("textarea").classList.add("rounded-border-red")
+        activeVideo.querySelector("textarea").classList.remove("rounded-border-green")
+        activeVideo.querySelector("textarea").classList.remove("rounded-border-red")
+        activeVideo.querySelector("textarea").classList.remove("rounded-border-white")
+        activeVideo.querySelector("textarea").classList.add("rounded-border-red")
         if (rightAnswers.length > 1) {
           score--;
         }
       }
     }
     else {
-      activeTest.querySelector("textarea").value = "";
-      activeTest.querySelector("textarea").classList.remove("rounded-border-green")
-      activeTest.querySelector("textarea").classList.remove("rounded-border-red")
-      activeTest.querySelector("textarea").classList.add("rounded-border-white")
+      activeVideo.querySelector("textarea").value = "";
+      activeVideo.querySelector("textarea").classList.remove("rounded-border-green")
+      activeVideo.querySelector("textarea").classList.remove("rounded-border-red")
+      activeVideo.querySelector("textarea").classList.add("rounded-border-white")
       if (answer == "right") {
         if (rightAnswers.length > 1) {
           score--;
@@ -189,10 +195,10 @@ function hdlLoad(): void {
         if (card) {
           place.appendChild(card);
           if (place.getAttribute("dest") == card.getAttribute("dest")) {
-            activeTest.querySelector("textarea").value = "Korrekt!";
-            activeTest.querySelector("textarea").classList.remove("rounded-border-red")
-            activeTest.querySelector("textarea").classList.remove("rounded-border-green")
-            activeTest.querySelector("textarea").classList.add("rounded-border-green")
+            activeVideo.querySelector("textarea").value = "Korrekt!";
+            activeVideo.querySelector("textarea").classList.remove("rounded-border-red")
+            activeVideo.querySelector("textarea").classList.remove("rounded-border-green")
+            activeVideo.querySelector("textarea").classList.add("rounded-border-green")
             if (card.getAttribute("false") == "false") {
               score++;
             }
@@ -203,10 +209,10 @@ function hdlLoad(): void {
             score++;
           }
           else if (place.getAttribute("text")) {
-            activeTest.querySelector("textarea").value = place.getAttribute("text");
-            activeTest.querySelector("textarea").classList.remove("rounded-border-green")
-            activeTest.querySelector("textarea").classList.remove("rounded-border-red")
-            activeTest.querySelector("textarea").classList.add("rounded-border-red")
+            activeVideo.querySelector("textarea").value = place.getAttribute("text");
+            activeVideo.querySelector("textarea").classList.remove("rounded-border-green")
+            activeVideo.querySelector("textarea").classList.remove("rounded-border-red")
+            activeVideo.querySelector("textarea").classList.add("rounded-border-red")
             if (card.getAttribute("false") == "true") {
               score--;
             }
@@ -216,10 +222,10 @@ function hdlLoad(): void {
             }
           }
           else {
-            activeTest.querySelector("textarea").value = card.getAttribute("text");
-            activeTest.querySelector("textarea").classList.remove("rounded-border-green")
-            activeTest.querySelector("textarea").classList.remove("rounded-border-red")
-            activeTest.querySelector("textarea").classList.add("rounded-border-red")
+            activeVideo.querySelector("textarea").value = card.getAttribute("text");
+            activeVideo.querySelector("textarea").classList.remove("rounded-border-green")
+            activeVideo.querySelector("textarea").classList.remove("rounded-border-red")
+            activeVideo.querySelector("textarea").classList.add("rounded-border-red")
             if (card.getAttribute("false") == "true") {
               score--;
             }
@@ -228,7 +234,7 @@ function hdlLoad(): void {
               score--;
             }
           }
-          if (score == activeTest.getElementsByClassName('card').length) {
+          if (score == activeVideo.getElementsByClassName('card').length) {
             setTimeout(alt, 100);
           }
         }
