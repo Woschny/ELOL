@@ -46,10 +46,10 @@ body{
   z-index: 4;
   right: 23%;
   top: 81%;
-  color: white;
-  background-color: #262626;
+  color: #cacaca;
+  background-color: #131313;
   transform: translate(-50%, -50%);
-  border: white;
+  border: #cacaca;
   border-width: 5px;
   border-radius: 20px;
   border-style: solid;
@@ -67,6 +67,7 @@ body{
   }
 
   .slide-in-from-left {
+    position: absolute;
     animation: slideInFromLeft 0.5s ease-in-out forwards;
   }
 
@@ -84,7 +85,7 @@ body{
     position: absolute;
     width: 220px;
     z-index: 2;
-    top: 25%;
+    top: 15%;
     padding: 10px;
     padding-top: 15px;
     border: 2px solid #131313;
@@ -121,13 +122,13 @@ cursor: pointer;
 }
     
 .card{
-    background-color: #2477a7;
+    background-color: #131313;
     padding: 10px;
     margin: 10px;
     width: fit-content;
     height: fit-content;
-    border: 2px solid #2477a7;
-    border-radius: 120px;;
+    border: 3px solid #cacaca;
+    border-radius: 10px;;
 }
 .stacked{
   text-align: center;
@@ -135,14 +136,16 @@ cursor: pointer;
   padding-right: 20px;
 }
 .place{
-    background-color: #1f1e6d;
+    background-color: #131313;
     padding: 20px;
     padding-bottom: 100px;
     margin: 20px;
     width: fit-content;
-    border: 2px solid #1f1e6d;
-    border-radius: 20px;
+    border: 3px solid #cacaca;
+    border-radius: 10px;
     text-align: center;
+    text-decoration:underline;
+
 }
 .origin{
   position: absolute;
@@ -168,6 +171,7 @@ cursor: pointer;
   width: 460px;
   display: flex;
   flex-wrap: wrap;
+  margin-left: 17px;
 }
 
 .quellen{
@@ -182,7 +186,7 @@ a{
 
 textarea{
     position: absolute;
-    height: 500px;
+    height: 300px;
     width: 300px;
     top: 0px;
     left: 1100px;
@@ -191,7 +195,8 @@ textarea{
     font-size: x-large;
     border: 10px solid;
     border-radius: 20px;;
-    border-color: white;
+    background-color: #cacaca;
+    border-color: #cacaca;
     text-align: center;
 }
 .test{
@@ -210,13 +215,13 @@ textarea{
 .rounded-border-green {
     border: 10px solid;
     border-radius: 20px;;
-    border-color: white;
+    border-color: #cacaca;
     animation: border-color-animation-green 0.2s linear forwards;
   }
   
   @keyframes border-color-animation-green {
     0% {
-      border-color: white;
+      border-color: #cacaca;
     }
     100% {
       border-color: green;
@@ -226,13 +231,13 @@ textarea{
   .rounded-border-red {
     border: 10px solid;
     border-radius: 20px;;
-    border-color: white;
+    border-color: #cacaca;
     animation: border-color-animation-red 0.2s linear forwards;
   }
   
   @keyframes border-color-animation-red {
     0% {
-      border-color: white;
+      border-color: #cacaca;
     }
     100% {
       border-color: red;
@@ -242,15 +247,15 @@ textarea{
   .rounded-border-white {
     border: 10px solid;
     border-radius: 20px;
-    border-color: white;
+    border-color: #cacaca;
     animation: border-color-animation-white 0.2s linear forwards;
   }
   
   @keyframes border-color-animation-white {
     0% {
-      border-color: white;
+      border-color: #cacaca;
     }
     100% {
-      border-color: white;
+      border-color: #cacaca;
     }
   }
