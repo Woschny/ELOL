@@ -6,9 +6,22 @@ body{
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
+.background{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url(./Assets/Background.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-attachment: fixed;
+  background-position: center;
+}
+
 @keyframes slideInFromLeft {
     0% {
-      transform: translateX(-100%);
+      transform: translateX(-80%);
       opacity: 1;
     }
     100% {
@@ -23,23 +36,24 @@ body{
         opacity: 1;
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-80%);
         opacity: 1;
     }
   }
   
 #nextButton{
-  position: absolute;
+  position: fixed;
   z-index: 4;
-  left: 1650px;
-  top: 800px;
+  right: 23%;
+  top: 81%;
   color: white;
   background-color: #262626;
+  transform: translate(-50%, -50%);
   border: white;
   border-width: 5px;
   border-radius: 20px;
   border-style: solid;
-  padding: 20px;
+  padding: 10px;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
@@ -97,17 +111,15 @@ cursor: pointer;
     position: absolute;
 }
 #active{
-    background-color: #262626;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 48%;
+    top: 47%;
     transform: translate(-50%, -50%);
-    width: 90vw;
-    height: 90vh;
+    width: 70vw;
+    height: 70vh;
     z-index: 1;
-    border: 2px solid #262626;
-    border-radius: 30px;;
 }
+    
 .card{
     background-color: #2477a7;
     padding: 10px;
@@ -145,41 +157,54 @@ cursor: pointer;
 
 #destination{
   position: absolute;
-  top: 300px;
+  left: -28px;
+  top: 230px;
     display: flex;
     flex-wrap: wrap;
     width: 1500px;
 }
 
 .big{
-  width: 480px;
+  width: 460px;
   display: flex;
   flex-wrap: wrap;
 }
 
+.quellen{
+  position: absolute;
+padding: 20px;
+}
+
+a{
+  position: absolute;
+  z-index: 10;
+}
+
 textarea{
     position: absolute;
-    top: 323px;
-    left: 1150px;
+    height: 500px;
+    width: 300px;
+    top: 0px;
+    left: 1100px;
     user-select: none;
     pointer-events: none;
-    text-align: center;
-    font-size: large;
+    font-size: x-large;
     border: 10px solid;
     border-radius: 20px;;
     border-color: white;
+    text-align: center;
 }
 .test{
     position: absolute;
-    left: 150px;
-    top: 100px;
+    left: 12%;
+    top: 5%
 }
 .video{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1280px;
+    width: 70%;
 }
 
 .rounded-border-green {

@@ -49,6 +49,7 @@ function hdlLoad(): void {
 
   moveVideoToActive("IntroVideo");
 
+
   const body: HTMLBodyElement = <HTMLBodyElement>document.querySelector("body");
   let x: number = 0;
   let y: number = 0;
