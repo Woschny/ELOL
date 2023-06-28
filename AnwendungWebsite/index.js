@@ -70,9 +70,14 @@ function hdlLoad() {
     function moveVideoToActive(id) {
         console.log(id);
         if (id == "test1" || id == "test2" || id == "test3" || id == "test4" || id == "test5" || id == "test6" || id == "test7" || id == "test8") {
+            nextButton.style.visibility = "hidden";
             moveTestToActive(id);
         }
         else {
+            nextButton.style.visibility = "visible";
+            if (id == "OutroVideo") {
+                nextButton.style.visibility = "hidden";
+            }
             if (divActive.children.length > 0) {
                 if (divActive.children[0].className == "video") {
                     activeVideo.pause();
@@ -88,6 +93,7 @@ function hdlLoad() {
         }
     }
     function moveTestToActive(id) {
+        nextButton.style.visibility = "hidden";
         if (divActive.children.length > 0) {
             if (divActive.children[0].className == "video") {
                 activeVideo.pause();

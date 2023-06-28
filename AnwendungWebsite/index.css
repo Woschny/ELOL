@@ -19,28 +19,6 @@ body{
   background-position: center;
 }
 
-@keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-80%);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideInFromRight {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-80%);
-        opacity: 1;
-    }
-  }
-  
 #nextButton{
   position: fixed;
   z-index: 4;
@@ -55,6 +33,7 @@ body{
   border-style: solid;
   padding: 10px;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
+  visibility: hidden;
 }
 
 #nextButton:hover{
@@ -63,12 +42,12 @@ body{
 
   .slide-in-from-right {
     position: absolute;
-    animation: slideInFromRight 0.5s ease-in-out forwards;
+
   }
 
   .slide-in-from-left {
     position: absolute;
-    animation: slideInFromLeft 0.5s ease-in-out forwards;
+
   }
 
 #location{
@@ -182,6 +161,7 @@ padding: 20px;
 a{
   position: absolute;
   z-index: 10;
+  padding-left: 5px;
 }
 
 textarea{
